@@ -38,9 +38,26 @@ GetOptions  (   'output-file=s'		=> \$opt_output_file,		# file to output to (aot
 usage() if (!defined($opt_page_size) || $opt_help == 1);
 
 
+print &random_int . "\t" . &random_int(11) . "\n";
+
 #############
 ## subs
 #############
+
+
+sub random_int
+{
+    ## var
+    my $range               = $_[0];
+    
+    ## do
+    if (!defined($range))
+    {
+        $range              = '10000';
+    }
+
+    return(int(rand($range)));
+}
 
 sub usage
 {
