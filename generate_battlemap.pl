@@ -110,7 +110,7 @@ sub generate_page
     print("<g stroke='#808080' stroke-width='.007'>\n");
     for (my $x = 0; $x lt $page_width; $x++)
     {
-        #print("!! $x && $page_width !!\n");
+#        print("!! $x && $page_width !!\n");
         for (my $y = 0; $y lt $page_height; $y++)
         {
             ## do
@@ -120,7 +120,7 @@ sub generate_page
             my $xx1     = 3 - $x % 2 * 2;
             my $yy2     = 1 + $y % 2 * 2;
             my $yy1     = 3 - $y % 2 * 2;
-            
+           
             my $x1      = &z0($xx1);
             my $y1      = &z1(1);
             
@@ -150,6 +150,7 @@ sub generate_page
         
         for (my $x = 1; $x le $page_width; $x += 2)
         {
+		print ("$x\n");
             for (my $y = 1; $y le $page_height; $y += 2)
             {
                 print("<line x1='" . ($x - 0.05) . "' y1='" . $y . "' x2='" . ($x + 0.05) . "' y2='" . $y . "' />\n");
