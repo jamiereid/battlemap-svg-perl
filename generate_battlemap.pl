@@ -85,7 +85,7 @@ sub page_dimensions
         case 'a1'       { return(int(33.11),int(23.39)) }
         case 'a2'       { return(int(23.39),int(16.54)) }
         case 'a3'       { return(int(16.54),int(11.69)) }
-        case 'a4'       { return(int(11.69),int(8.27)) }
+        case 'a4'       { return("11.69","8.27") }
         else            { print("!! No page size specified, defaulting to A4\n"); return(&dimensions("a4")) }
     }
 }
@@ -108,10 +108,10 @@ sub generate_page
     print("  >	\n");
     
     print("<g stroke='#808080' stroke-width='.007'>\n");
-    for (my $x = 0; $x < $page_width; $x++)
+    for (my $x = 0; $x < int($page_width); $x++)
     {
         #print("!! $x && $page_width !!\n");
-        for (my $y = 0; $y < $page_height; $y++)
+        for (my $y = 0; $y < int($page_height); $y++)
         {
             ## do
             print("<svg x='" . $x . "' y='" . $y . "'>");
@@ -149,10 +149,10 @@ sub generate_page
         print("</g>\n");
         print("<g stroke='black' stroke-width='.014'>\n");
         
-        for (my $dex = 1; $dex <= $page_width; $dex += 2)
+        for (my $dex = 1; $dex <= int($page_width); $dex += 2)
         {
 		#print ("$dex\n");
-            for (my $yex = 1; $yex <= $page_height; $yex += 2)
+            for (my $yex = 1; $yex <= int($page_height); $yex += 2)
             {
                 print("<line x1='" . ($dex - 0.05) . "' y1='" . $yex . "' x2='" . ($dex + 0.05) . "' y2='" . $yex . "' />\n");
                 print("<line x1='" . $dex . "' y1='" . ($yex - 0.05) . "' x2='" . $dex . "' y2='" . ($yex + 0.05) . "' />\n");
